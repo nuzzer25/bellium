@@ -1,8 +1,10 @@
-# Bellium
+<div align="center">
+  <img src="logo/Bellium.svg"><br>
+</div>
 
-## Summary
+---
 
-**Bellium** is a Python package that provides fast, flexible, and easy utilisation with creating and training particular neural networks.
+# Bellium: An Efficient Machine Learning Python Package
 
 ## Main Features
 
