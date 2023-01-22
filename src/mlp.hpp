@@ -1,26 +1,41 @@
 #ifndef MLP_HPP
 #define MLP_HPP
 
-#include "models.hpp"
+// Headers
+#include <vector>
+#include <string>
+#include <memory>
+#include <iostream>
+#include <pybind11/pybind11.h>
+#include <pybind11/numpy.h>
+#include <pybind11/stl.h>
+#include "functions.hpp"
 
-class MLP : public Model
+// Namespace
+namespace py = pybind11;
+
+class MLP
 {
 private:
-    // Dynamic HyperParameters
-    std::vector<int> layers;                               // Layers as a vector
+    // Dynamic Parameters
+    int input_layer;                                       // Number of Hidden Layers
+    std::vector<int> hidden_layers;                        // Number of Hidden Layers
+    int output_layer;                                      // Number of Hidden Layers
+    double learning_rate;                                  // Learning Rate
     std::vector<std::vector<std::vector<double>>> weights; // Weights
     std::vector<std::vector<double>> biases;               // Biases
-    double learning_rate;                                  // Learning Rate
-
-    // MLP Neural Network
-    void forwardPropagation(std::vector<double> &); // Forward Propagation
-    void backPropagation(std::vector<double> &);    // Backwards Propagation
-    void gradientDescent();                         // Gradient of Descent
-    void update();                                  // Updating Parameters
 
 public:
     // MLP Constructor
-    MLP(std::vector<int>, double);
+    MLP(int, py::handle, int, double);
+
+    // MLP Neural Network
+    void attributes();                  // Attributes
+    void init();                        // Initialise Parameters
+    std::vector<double> forward_prop(); // Forward Propagation
+    // std::vector<double> MLP::backward_prop(std::vector<double>); // Backward Propagation
+    // void gradientDescent();                                      // Gradient of Descent
+    // void update();                                               // Updating Parameters
 };
 
 #endif

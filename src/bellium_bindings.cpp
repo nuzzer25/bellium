@@ -1,12 +1,11 @@
-#include "neural_network.hpp"
+#include "mlp.hpp"
 
 PYBIND11_MODULE(bellium, m)
 {
-    // Creating Model
-    m.def("create", &create, py::return_value_policy::reference, "Creates an Instance of a Neural Network Model");
-
-    // Model Class
-    py::class_<Model>(m, "Model")
-        .def(py::init<std::string, std::vector<int>, double>())
-        .def("attributes", &Model::attributes, "Views Model Attributes");
+    // MLP Class
+    py::class_<MLP>(m, "MLP")
+        .def(py::init<int, py::handle, int, double>())
+        .def("attributes", &MLP::attributes)
+        .def("init", &MLP::init)
+        .def("forward_prop", &MLP::forward_prop);
 }

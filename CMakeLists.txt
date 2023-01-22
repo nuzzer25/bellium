@@ -9,5 +9,5 @@ add_subdirectory(lib/pybind11)
 include_directories(lib/pybind11/include)
 
 # Add the functions pybind module
-pybind11_add_module(bellium src/bellium_bindings.cpp src/functions.cpp src/models.cpp src/mlp.cpp)
+pybind11_add_module(bellium src/bellium_bindings.cpp src/functions.cpp src/mlp.cpp)
 
